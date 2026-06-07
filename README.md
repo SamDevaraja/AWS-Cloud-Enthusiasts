@@ -1,4 +1,4 @@
-# Cloud Enthusiasts Registration & Attendance System Backend
+# AWS Cloud Enthusiast Backend
 
 A production-ready, API-first backend built using **Node.js**, **Express.js**, and **PostgreSQL (NeonDB)**. Designed for high performance under concurrency, dynamic registration forms builder, secure ticketing, and a safe, auditable archive-rollback workflow.
 
