@@ -1,6 +1,6 @@
-# AWS Cloud Enthusiast Backend
+# AWS Cloud Enthusiasts Platform
 
-A production-ready, API-first backend built using **Node.js**, **Express.js**, and **PostgreSQL (NeonDB)**. Designed for high performance under concurrency, dynamic registration forms builder, secure ticketing, and a safe, auditable archive-rollback workflow.
+A complete full-stack Event Management platform built for the AWS Cloud Enthusiasts community. This repository contains both the **React + Vite Frontend** and the production-ready **Node.js + Express.js Backend** (powered by PostgreSQL/NeonDB). It is designed for high performance under concurrency, dynamic registration form building, secure QR ticketing, and a safe, auditable archive-rollback workflow.
 
 ---
 
