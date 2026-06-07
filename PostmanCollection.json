@@ -1,0 +1,312 @@
+{
+  "info": {
+    "name": "Cloud Enthusiasts Registration & Attendance System",
+    "description": "API collection for testing and integrating with the Cloud Enthusiasts backend.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "Admin Login",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"admin\",\n  \"password\": \"CloudEnthusiasts2026!\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/auth/login",
+              "host": ["{{base_url}}"],
+              "path": ["api", "auth", "login"]
+            }
+          }
+        },
+        {
+          "name": "Change Password",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [{ "key": "token", "value": "{{admin_token}}", "type": "string" }]
+            },
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"oldPassword\": \"CloudEnthusiasts2026!\",\n  \"newPassword\": \"NewSecurePassword2026!\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/auth/change-password",
+              "host": ["{{base_url}}"],
+              "path": ["api", "auth", "change-password"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Events",
+      "item": [
+        {
+          "name": "Get Live Events",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/api/events/live?page=1&limit=10",
+              "host": ["{{base_url}}"],
+              "path": ["api", "events", "live"],
+              "query": [
+                { "key": "page", "value": "1" },
+                { "key": "limit", "value": "10" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Event Details",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/api/events/:eventId",
+              "host": ["{{base_url}}"],
+              "path": ["api", "events", ":eventId"],
+              "variable": [{ "key": "eventId", "value": "" }]
+            }
+          }
+        },
+        {
+          "name": "Get Event Form fields",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/api/events/:eventId/form",
+              "host": ["{{base_url}}"],
+              "path": ["api", "events", ":eventId", "form"],
+              "variable": [{ "key": "eventId", "value": "" }]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Student Registration",
+      "item": [
+        {
+          "name": "Register Student",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"sam.dev@gmail.com\",\n  \"registerNumber\": \"917722104050\",\n  \"responses\": {\n    \"Name\": \"Sam Devaraja\",\n    \"Email\": \"sam.dev@gmail.com\",\n    \"Register Number\": \"917722104050\",\n    \"Department\": \"Computer Science\",\n    \"Year\": \"3rd Year\",\n    \"Phone Number\": \"9876543210\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/events/:eventId/register",
+              "host": ["{{base_url}}"],
+              "path": ["api", "events", ":eventId", "register"],
+              "variable": [{ "key": "eventId", "value": "" }]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Attendance Tracking",
+      "item": [
+        {
+          "name": "Check-in Student",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [{ "key": "token", "value": "{{admin_token}}", "type": "string" }]
+            },
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ticketId\": \"\",\n  \"eventId\": \"\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/attendance/checkin",
+              "host": ["{{base_url}}"],
+              "path": ["api", "attendance", "checkin"]
+            }
+          }
+        },
+        {
+          "name": "Check-out Student",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [{ "key": "token", "value": "{{admin_token}}", "type": "string" }]
+            },
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ticketId\": \"\",\n  \"eventId\": \"\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/attendance/checkout",
+              "host": ["{{base_url}}"],
+              "path": ["api", "attendance", "checkout"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Exports & Archiving",
+      "item": [
+        {
+          "name": "Export Registrations (CSV)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [{ "key": "token", "value": "{{admin_token}}", "type": "string" }]
+            },
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/api/events/:eventId/export/registrations/csv",
+              "host": ["{{base_url}}"],
+              "path": ["api", "events", ":eventId", "export", "registrations", "csv"],
+              "variable": [{ "key": "eventId", "value": "" }]
+            }
+          }
+        },
+        {
+          "name": "Export Registrations (Excel)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [{ "key": "token", "value": "{{admin_token}}", "type": "string" }]
+            },
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/api/events/:eventId/export/registrations/excel",
+              "host": ["{{base_url}}"],
+              "path": ["api", "events", ":eventId", "export", "registrations", "excel"],
+              "variable": [{ "key": "eventId", "value": "" }]
+            }
+          }
+        },
+        {
+          "name": "Export Attendance (CSV)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [{ "key": "token", "value": "{{admin_token}}", "type": "string" }]
+            },
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/api/events/:eventId/export/attendance/csv",
+              "host": ["{{base_url}}"],
+              "path": ["api", "events", ":eventId", "export", "attendance", "csv"],
+              "variable": [{ "key": "eventId", "value": "" }]
+            }
+          }
+        },
+        {
+          "name": "Export Attendance (Excel)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [{ "key": "token", "value": "{{admin_token}}", "type": "string" }]
+            },
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/api/events/:eventId/export/attendance/excel",
+              "host": ["{{base_url}}"],
+              "path": ["api", "events", ":eventId", "export", "attendance", "excel"],
+              "variable": [{ "key": "eventId", "value": "" }]
+            }
+          }
+        },
+        {
+          "name": "Confirm Download & Archive",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [{ "key": "token", "value": "{{admin_token}}", "type": "string" }]
+            },
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"exportLogId\": \"\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/events/:eventId/export/confirm",
+              "host": ["{{base_url}}"],
+              "path": ["api", "events", ":eventId", "export", "confirm"],
+              "variable": [{ "key": "eventId", "value": "" }]
+            }
+          }
+        },
+        {
+          "name": "Rollback Archive",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [{ "key": "token", "value": "{{admin_token}}", "type": "string" }]
+            },
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"archiveLogId\": \"\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/events/:eventId/archive/rollback",
+              "host": ["{{base_url}}"],
+              "path": ["api", "events", ":eventId", "archive", "rollback"],
+              "variable": [{ "key": "eventId", "value": "" }]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Statistics",
+      "item": [
+        {
+          "name": "Get Event Statistics",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [{ "key": "token", "value": "{{admin_token}}", "type": "string" }]
+            },
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/api/events/:eventId/stats",
+              "host": ["{{base_url}}"],
+              "path": ["api", "events", ":eventId", "stats"],
+              "variable": [{ "key": "eventId", "value": "" }]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "event": [],
+  "variable": [
+    { "key": "base_url", "value": "http://localhost:5000", "type": "string" },
+    { "key": "admin_token", "value": "", "type": "string" }
+  ]
+}

@@ -1,0 +1,167 @@
+/* Cloud Learning Domains Section Styles */
+
+.domains-section {
+  background-color: var(--color-bg-main);
+  overflow: hidden;
+  padding: 60px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.domains-header {
+  text-align: center;
+  margin-bottom: 54px;
+}
+
+/* Marquee Scroller Wrapper */
+.marquee-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  position: relative;
+}
+
+/* Inner marquee tracks */
+.marquee-track-container {
+  display: flex;
+  overflow: hidden;
+  user-select: none;
+  width: 100%;
+  position: relative;
+}
+
+/* Linear gradient overlays to fade out marquee edges */
+.marquee-wrapper::before,
+.marquee-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 120px;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.marquee-wrapper::before {
+  left: 0;
+  background: linear-gradient(to right, var(--color-bg-main), transparent);
+}
+
+.marquee-wrapper::after {
+  right: 0;
+  background: linear-gradient(to left, var(--color-bg-main), transparent);
+}
+
+.marquee-track {
+  display: flex;
+  gap: 20px;
+  white-space: nowrap;
+  will-change: transform;
+}
+
+/* Pause scroll animation when user hovers */
+.marquee-track-container:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+/* Row 1 Leftward animation */
+.track-left .marquee-track {
+  animation: scrollLeft 65s linear infinite;
+}
+
+/* Row 2 Rightward animation */
+.track-right .marquee-track {
+  animation: scrollRight 65s linear infinite;
+}
+
+@keyframes scrollLeft {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-33.3333%, 0, 0);
+  }
+}
+
+@keyframes scrollRight {
+  0% {
+    transform: translate3d(-33.3333%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* Domain tag element styles */
+.domain-tag {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 9999px;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  cursor: default;
+  box-shadow: var(--shadow-sm);
+}
+
+.domain-tag:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: var(--shadow-md);
+}
+
+/* Strict Brand Colors Palette implementation */
+
+/* Teal Outline tag */
+.domain-tag-teal-outline {
+  background-color: transparent;
+  border: 2px solid var(--primary-teal);
+  color: var(--primary-teal);
+}
+
+.domain-tag-teal-outline:hover {
+  background-color: rgba(0, 95, 102, 0.05);
+}
+
+/* Mint Background tag */
+.domain-tag-mint-bg {
+  background-color: var(--accent-mint);
+  color: #005F66;
+  border: 1px solid rgba(0, 95, 102, 0.1);
+}
+
+/* Beige Background tag */
+.domain-tag-beige-bg {
+  background-color: var(--secondary-beige);
+  color: #1F2937;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+/* Solid Teal tag */
+.domain-tag-teal-solid {
+  background-color: var(--primary-teal);
+  color: #FFFFFF;
+  border: 1px solid var(--primary-teal);
+}
+
+.dark .domain-tag-teal-solid {
+  color: #111618;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .domains-section {
+    padding: 40px 0;
+  }
+  
+  .domain-tag {
+    padding: 10px 18px;
+    font-size: 14px;
+  }
+  
+  .marquee-track-container .marquee-track {
+    animation-duration: 50s !important;
+  }
+}

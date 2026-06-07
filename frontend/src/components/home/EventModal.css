@@ -1,0 +1,219 @@
+/* Event Details Modal Styles */
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2000;
+  background-color: rgba(17, 22, 24, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.modal-content {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  max-height: 90vh;
+  border-radius: var(--border-radius-lg);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-lg);
+  outline: none;
+  background: var(--glass-bg);
+}
+
+/* Close Icon top right */
+.modal-close-icon-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 20;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #FFFFFF;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.modal-close-icon-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: rotate(90deg);
+}
+
+/* 1. Cover Image */
+.modal-cover-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background-color: var(--color-bg-sec);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.modal-cover-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.modal-badge-overlay {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  z-index: 10;
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(8px);
+}
+
+/* Scrollable Body */
+.modal-body {
+  padding: 32px 32px 24px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: left;
+}
+
+/* 2. Event Title */
+.modal-title {
+  font-family: var(--font-heading);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--primary-teal);
+  margin: 0;
+  line-height: 1.25;
+}
+
+/* 3. Short Description */
+.modal-description {
+  font-size: 16px;
+  color: var(--color-text-sec);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* 4. Event Information Section */
+.modal-info-section {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  border-top: 1px solid var(--color-border);
+  padding-top: 20px;
+}
+
+.modal-info-title {
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-text-main);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+
+.modal-info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.modal-info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.modal-info-icon {
+  color: var(--primary-teal);
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.modal-info-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-sec);
+  margin-bottom: 2px;
+}
+
+.modal-info-value {
+  display: block;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--color-text-main);
+  line-height: 1.4;
+}
+
+/* 5. Action Section */
+.modal-action-section {
+  display: flex;
+  gap: 12px;
+  padding: 0 32px 32px 32px;
+  width: 100%;
+}
+
+.modal-action-btn-primary {
+  flex: 1.5;
+  padding: 12px 20px;
+  font-size: 15px;
+}
+
+.modal-action-btn-secondary {
+  flex: 1;
+  padding: 12px 20px;
+  font-size: 15px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 580px) {
+  .modal-backdrop {
+    padding: 12px;
+  }
+  
+  .modal-content {
+    max-height: 95vh;
+  }
+
+  .modal-body {
+    padding: 24px 20px 20px 20px;
+  }
+
+  .modal-title {
+    font-size: 24px;
+  }
+
+  .modal-info-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .modal-action-section {
+    padding: 0 20px 24px 20px;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .modal-action-btn-primary,
+  .modal-action-btn-secondary {
+    width: 100%;
+  }
+}
