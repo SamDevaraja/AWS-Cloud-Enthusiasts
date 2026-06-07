@@ -17,6 +17,7 @@ A production-ready, API-first backend built using **Node.js**, **Express.js**, a
 ## Directory Structure
 ```
 EventManagementBackend/
+├── frontend/               # React + Vite Frontend Application
 ├── src/
 │   ├── config/             # DB & Env Configurations
 │   ├── db/                 # Migrations & Seeds
@@ -37,6 +38,12 @@ EventManagementBackend/
 ├── PostmanCollection.json
 └── API_Integration_Guide.md
 ```
+
+---
+
+## Deployment Architecture
+- **Frontend (React + Vite):** Deployed on Vercel. Ensure `Root Directory` is set to `frontend`. Environment variable: `VITE_API_URL` pointing to the backend.
+- **Backend (Node + Express):** Deployed on Render/Railway. Environment variables should include `DATABASE_URL` (cloud db like Neon/Supabase), `JWT_SECRET`, etc.
 
 ---
 

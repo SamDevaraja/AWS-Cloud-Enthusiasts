@@ -1,16 +1,40 @@
-# React + Vite
+# AWS Cloud Enthusiasts Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the React/Vite frontend for the AWS Cloud Enthusiasts Event Management platform.
 
-Currently, two official plugins are available:
+## Technical Stack
+- **Framework:** React 18
+- **Build Tool:** Vite
+- **Routing:** React Router v6
+- **Icons:** Lucide React
+- **Animations:** Framer Motion
+- **Styling:** Vanilla CSS + Tailwind-like Utility Classes
+- **API Requests:** Axios
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Getting Started
 
-## React Compiler
+### 1. Installation
+Install the project dependencies locally:
+```bash
+npm install
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 2. Environment Configuration
+Create a `.env` file in the `frontend` folder if you need to point to a production API:
+```ini
+VITE_API_URL=http://localhost:5000/api
+```
+*(If running locally, the Vite dev server proxy in `vite.config.js` will automatically route `/api` to your local `http://localhost:5000` backend).*
 
-## Expanding the ESLint configuration
+### 3. Start Development Server
+Run the Vite development server:
+```bash
+npm run dev
+```
+The app will be accessible at `http://localhost:5173`.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 4. Build for Production
+To build the app for production (Vercel deployment):
+```bash
+npm run build
+```
